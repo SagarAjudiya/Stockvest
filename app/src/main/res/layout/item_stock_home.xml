@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="stock"
+            type="com.simform.stockvest.model.Stock" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingVertical="10dp">
+
+        <ImageView
+            android:id="@+id/ivStockIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/stock_image_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_goto" />
+
+        <TextView
+            android:id="@+id/tvStockName"
+            style="@style/TextView.Normal.SemiBold.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="@{stock.name}"
+            app:layout_constraintEnd_toStartOf="@id/barrier2"
+            app:layout_constraintStart_toEndOf="@+id/ivStockIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivStockIcon"
+            tools:text="GOTO" />
+
+        <TextView
+            android:id="@+id/tvStockCName"
+            style="@style/TextView.SubTitle.Gray"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="@{stock.companyName}"
+            app:layout_constraintBottom_toBottomOf="@+id/ivStockIcon"
+            app:layout_constraintEnd_toStartOf="@id/barrier2"
+            app:layout_constraintStart_toEndOf="@+id/ivStockIcon"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockName"
+            tools:text="GOTO Gojek Tokopedia Tok" />
+
+        <TextView
+            android:id="@+id/tvStockPrice"
+            style="@style/TextView.Normal.SemiBold.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{stock.price}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvStockName"
+            tools:text="198" />
+
+        <TextView
+            android:id="@+id/tvStockPriceChange"
+            style="@style/TextView.SubTitle.Activatable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isActivated="@{ stock.priceChange.substring(0, 1).equals(`+`) }"
+            android:text="@{stock.priceChange}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockCName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvStockCName"
+            tools:text="+1 (+0,53)" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="tvStockPriceChange,tvStockPrice" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

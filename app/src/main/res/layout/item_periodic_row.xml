@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="period"
+            type="com.simform.stockvest.model.Period" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvPeriodText"
+            style="@style/TextView.SubTitle.Black.Table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:text="@{period.name}"
+            app:layout_constraintEnd_toStartOf="@+id/tvThirdYear"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="PERIOD" />
+
+        <TextView
+            android:id="@+id/tvThirdYear"
+            style="@style/TextView.SubTitle.Black.Table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{period.thirdYear}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPeriodText"
+            app:layout_constraintEnd_toStartOf="@+id/tvSecondYear"
+            app:layout_constraintStart_toEndOf="@+id/tvPeriodText"
+            app:layout_constraintTop_toTopOf="@+id/tvPeriodText"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvSecondYear"
+            style="@style/TextView.SubTitle.Black.Table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{period.secondYear}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvThirdYear"
+            app:layout_constraintEnd_toStartOf="@+id/tvFirstYear"
+            app:layout_constraintStart_toEndOf="@+id/tvThirdYear"
+            app:layout_constraintTop_toTopOf="@+id/tvThirdYear"
+            tools:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvFirstYear"
+            style="@style/TextView.SubTitle.Black.Table"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{period.firstYear}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSecondYear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvSecondYear"
+            app:layout_constraintTop_toTopOf="@+id/tvSecondYear"
+            tools:text="TextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="stock"
+            type="com.simform.stockvest.model.Stock" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingVertical="10dp"
+        tools:context=".ui.home.HomeFragment">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edSearch"
+            style="@style/EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="16dp"
+            android:hint="@string/search"
+            android:inputType="textCapCharacters"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSensexName"
+            style="@style/TextView.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@{stock.name}"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/edSearch"
+            tools:text="Sensex Name" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            style="@style/TextView.Large"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{stock.price}"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvSensexName"
+            tools:text="70,349" />
+
+        <TextView
+            android:id="@+id/tvPercentageChange"
+            style="@style/TextView.Medium.Activatable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:isActivated="@{ stock.priceChange.substring(0, 1).equals(`+`) }"
+            android:text="@{stock.priceChange}"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+            tools:text="-35,62 (-50%)" />
+
+        <ImageView
+            android:id="@+id/ivGraph"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/graph_image"
+            android:src="@drawable/graph"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvPercentageChange" />
+
+        <TextView
+            android:id="@+id/tvOpenText"
+            style="@style/TextView.SubTitle.SemiBold.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/open"
+            app:layout_constraintEnd_toStartOf="@id/tvOpen"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/ivGraph" />
+
+        <TextView
+            android:id="@+id/tvOpen"
+            style="@style/TextView.SubTitle.Activatable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:isActivated="@{ stock.open.substring(0, 1).equals(`+`) }"
+            android:text="@{stock.open}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/tvOpenText"
+            app:layout_constraintEnd_toStartOf="@id/tvLotText"
+            app:layout_constraintStart_toEndOf="@+id/tvOpenText"
+            app:layout_constraintTop_toTopOf="@+id/tvOpenText"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="70.491" />
+
+        <TextView
+            android:id="@+id/tvLotText"
+            style="@style/TextView.SubTitle.SemiBold.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/lot"
+            app:layout_constraintBottom_toBottomOf="@+id/tvOpen"
+            app:layout_constraintEnd_toStartOf="@id/tvLot"
+            app:layout_constraintStart_toEndOf="@+id/tvOpen"
+            app:layout_constraintTop_toTopOf="@+id/tvOpen" />
+
+        <TextView
+            android:id="@+id/tvLot"
+            style="@style/TextView.SubTitle.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{stock.lot}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLotText"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@+id/tvLotText"
+            app:layout_constraintTop_toTopOf="@+id/tvLotText"
+            tools:text="186,26 M" />
+
+        <TextView
+            android:id="@+id/tvHighText"
+            style="@style/TextView.SubTitle.SemiBold.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/high"
+            app:layout_constraintEnd_toStartOf="@id/tvHigh"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvOpenText" />
+
+        <TextView
+            android:id="@+id/tvHigh"
+            style="@style/TextView.SubTitle.Activatable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:isActivated="@{ stock.high.substring(0, 1).equals(`+`) }"
+            android:text="@{stock.high}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHighText"
+            app:layout_constraintEnd_toEndOf="@+id/tvOpen"
+            app:layout_constraintStart_toEndOf="@+id/tvHighText"
+            app:layout_constraintTop_toTopOf="@+id/tvHighText"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="70.491" />
+
+        <TextView
+            android:id="@+id/tvValueText"
+            style="@style/TextView.SubTitle.SemiBold.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/value"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHigh"
+            app:layout_constraintEnd_toStartOf="@id/tvValue"
+            app:layout_constraintStart_toStartOf="@+id/tvLotText"
+            app:layout_constraintTop_toTopOf="@+id/tvHigh" />
+
+        <TextView
+            android:id="@+id/tvValue"
+            style="@style/TextView.SubTitle.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{stock.value}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/tvValueText"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@+id/tvValueText"
+            app:layout_constraintTop_toTopOf="@+id/tvValueText"
+            tools:text="186,26 M" />
+
+        <TextView
+            android:id="@+id/tvLowText"
+            style="@style/TextView.SubTitle.SemiBold.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/low"
+            app:layout_constraintEnd_toStartOf="@id/tvLow"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvHighText" />
+
+        <TextView
+            android:id="@+id/tvLow"
+            style="@style/TextView.SubTitle.Activatable"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:isActivated="@{ stock.low.substring(0, 1).equals(`+`) }"
+            android:text="@{stock.low}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLowText"
+            app:layout_constraintEnd_toEndOf="@+id/tvHigh"
+            app:layout_constraintStart_toEndOf="@+id/tvLowText"
+            app:layout_constraintTop_toTopOf="@+id/tvLowText"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="70.491" />
+
+        <TextView
+            android:id="@+id/tvFreqText"
+            style="@style/TextView.SubTitle.SemiBold.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/freq"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLow"
+            app:layout_constraintEnd_toStartOf="@id/tvFreq"
+            app:layout_constraintStart_toStartOf="@+id/tvValueText"
+            app:layout_constraintTop_toTopOf="@+id/tvLow" />
+
+        <TextView
+            android:id="@+id/tvFreq"
+            style="@style/TextView.SubTitle.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{stock.frequency}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFreqText"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@+id/tvFreqText"
+            app:layout_constraintTop_toTopOf="@+id/tvFreqText"
+            tools:text="186,26 M" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsvChipFilter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvLow">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:checkedChip="@id/chipTrending"
+                app:chipSpacing="10dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTrending"
+                    style="@style/Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trending" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTopGainer"
+                    style="@style/Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/top_gainer" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTopLoser"
+                    style="@style/Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/top_loser" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMostActive"
+                    style="@style/Chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/most_active" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvStockHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/hsvChipFilter"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/item_stock_home" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

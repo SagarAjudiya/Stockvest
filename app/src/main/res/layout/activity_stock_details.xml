@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="stock"
+            type="com.simform.stockvest.model.Stock" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".activities.StockDetailsActivity">
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@id/view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp">
+
+                <HorizontalScrollView
+                    android:id="@+id/hsvChipFilter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:scrollbars="none"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/ivGraph2">
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupFilter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:checkedChip="@id/chipTrending"
+                        app:chipSpacing="10dp"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipAnalysis"
+                            style="@style/Chip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/analysis" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipNews"
+                            style="@style/Chip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/news" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipOrderbook"
+                            style="@style/Chip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/orderbook" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipKeyStatistics"
+                            style="@style/Chip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/key_statistics" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipCompanyProfile"
+                            style="@style/Chip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/company_profile" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </HorizontalScrollView>
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrierImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="tvPercentageChange2, chipGroupTags" />
+
+                <ImageView
+                    android:id="@+id/ivGraph2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="@string/graph_image"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/graph_detail"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/barrierImage" />
+
+                <TextView
+                    android:id="@+id/tvStockName2"
+                    style="@style/TextView.Normal.SemiBold.Black"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="@{stock.name}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivStockIcon2"
+                    app:layout_constraintTop_toTopOf="@+id/ivStockIcon2"
+                    tools:text="GOTO" />
+
+                <ImageView
+                    android:id="@+id/ivStockIcon2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="@string/stock_image_logo"
+                    app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_goto" />
+
+                <TextView
+                    android:id="@+id/tvStockCName2"
+                    style="@style/TextView.SubTitle.Gray"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:text="@{stock.companyName}"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivStockIcon2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ivStockIcon2"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStockName2"
+                    tools:text="GOTO Gojek Tokopedia Tok" />
+
+                <TextView
+                    android:id="@+id/tvPrice2"
+                    style="@style/TextView.Large"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{stock.price}"
+                    app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/tvStockCName2"
+                    tools:text="70,349" />
+
+                <TextView
+                    android:id="@+id/tvPercentageChange2"
+                    style="@style/TextView.Medium.Activatable"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:isActivated="@{ stock.priceChange.substring(0, 1).equals(`+`) }"
+                    android:text="@{stock.priceChange}"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPrice2"
+                    tools:text="-35,62 (-50%)" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupTags"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scaleX="-1"
+                    app:chipSpacingHorizontal="10dp"
+                    app:chipSpacingVertical="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvPercentageChange2"
+                    app:layout_constraintEnd_toStartOf="@id/guidelineRight"
+                    app:layout_constraintStart_toEndOf="@+id/tvPrice2"
+                    app:layout_constraintTop_toTopOf="@+id/tvPrice2"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="20dp" />
+
+                <TextView
+                    android:id="@+id/tvKeyStatisticsText"
+                    style="@style/TextView.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/key_statistics"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/hsvChipFilter" />
+
+                <TextView
+                    android:id="@+id/tvNetIncomeText"
+                    style="@style/TextView.Medium.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/net_income"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/tvKeyStatisticsText" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNetIncome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNetIncomeText"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_text_stock_details" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPeriodic"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/rvNetIncome"
+                    tools:itemCount="7"
+                    tools:listitem="@layout/item_periodic_row" />
+
+                <TextView
+                    android:id="@+id/tvValuationText"
+                    style="@style/TextView.Medium.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/valuation"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@id/rvPeriodic" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvValuation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/tvValuationText"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_text_stock_details" />
+
+                <TextView
+                    android:id="@+id/tvSolvencyText"
+                    style="@style/TextView.Medium.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/solvency"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/rvValuation" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSolvency"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSolvencyText"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/item_text_stock_details" />
+
+                <TextView
+                    android:id="@+id/tvDividendText"
+                    style="@style/TextView.Medium.Black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/dividend"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/rvSolvency" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDividend"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDividendText"
+                    tools:listitem="@layout/item_text_stock_details" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="-20dp"
+            android:background="@color/lightGray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/button2" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/Button.Sell"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@null"
+            android:backgroundTint="@color/colorRed"
+            android:text="@string/sell"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Button.Buy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/colorYellow"
+            android:text="@string/buy"
+            app:layout_constraintBottom_toBottomOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/button2"
+            app:layout_goneMarginBottom="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

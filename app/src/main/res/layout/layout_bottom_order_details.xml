@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="transaction"
+            type="com.simform.stockvest.model.Transaction" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="-16dp"
+            android:layout_marginBottom="-16dp"
+            android:background="@drawable/card_corner_background"
+            app:layout_constraintBottom_toBottomOf="@+id/tvInvestmentText"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="@+id/tvOrderTimeText" />
+
+        <TextView
+            android:id="@+id/tvKeyStatisticsText"
+            style="@style/TextView.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/order_detail"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/cancel_buttton"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:layout_constraintBottom_toBottomOf="@+id/tvKeyStatisticsText"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tvKeyStatisticsText"
+            app:layout_constraintTop_toTopOf="@+id/tvKeyStatisticsText" />
+
+        <TextView
+            android:id="@+id/tvStockName3"
+            style="@style/TextView.Normal.Bold.Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text="@{transaction.name}"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/ivStockIcon3"
+            app:layout_constraintTop_toTopOf="@+id/ivStockIcon3"
+            tools:text="GOTO" />
+
+        <ImageView
+            android:id="@+id/ivStockIcon3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/stock_image_logo"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/tvKeyStatisticsText"
+            app:srcCompat="@drawable/icon_goto" />
+
+        <TextView
+            android:id="@+id/tvStockCName3"
+            style="@style/TextView.SubTitle.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:lines="1"
+            android:text="@{transaction.companyName}"
+            app:layout_constraintBottom_toBottomOf="@+id/ivStockIcon3"
+            app:layout_constraintStart_toEndOf="@+id/ivStockIcon3"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockName3"
+            tools:text="GOTO Gojek Tokopedia Tok" />
+
+        <TextView
+            android:id="@+id/tvOrderTimeText"
+            style="@style/TextView.SubTitle.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:lines="1"
+            android:text="@string/order_time"
+            app:layout_constraintEnd_toStartOf="@id/tvOrderTime"
+            app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockCName3" />
+
+        <TextView
+            android:id="@+id/tvOrderTime"
+            style="@style/TextView.Normal.SemiBold.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:lines="1"
+            android:paddingHorizontal="16dp"
+            android:text="@{transaction.orderTime}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@id/tvOrderTimeText"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@id/tvOrderTimeText"
+            app:layout_constraintTop_toTopOf="@id/tvOrderTimeText"
+            tools:text="@string/order_time" />
+
+        <TextView
+            android:id="@+id/tvStatusText"
+            style="@style/TextView.SubTitle.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:lines="1"
+            android:text="@string/status"
+            app:layout_constraintEnd_toStartOf="@id/tvStatus"
+            app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvOrderTimeText" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            style="@style/TextView.Normal.SemiBold.Red"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:lines="1"
+            android:paddingHorizontal="16dp"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@id/tvStatusText"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@id/tvStatusText"
+            app:layout_constraintTop_toTopOf="@id/tvStatusText"
+            tools:text="@string/order_time" />
+
+
+        <TextView
+            android:id="@+id/tvLotText"
+            style="@style/TextView.SubTitle.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:lines="1"
+            android:text="@string/lot"
+            app:layout_constraintEnd_toStartOf="@id/tvLot"
+            app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatusText" />
+
+        <TextView
+            android:id="@+id/tvLot"
+            style="@style/TextView.Normal.SemiBold.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:lines="1"
+            android:paddingHorizontal="16dp"
+            android:text="@{transaction.lot}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@id/tvLotText"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@id/tvLotText"
+            app:layout_constraintTop_toTopOf="@id/tvLotText"
+            tools:text="@string/order_time" />
+
+
+        <TextView
+            android:id="@+id/tvPriceText"
+            style="@style/TextView.SubTitle.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:lines="1"
+            android:text="@string/price"
+            app:layout_constraintEnd_toStartOf="@id/tvPrice"
+            app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvLotText" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            style="@style/TextView.Normal.SemiBold.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:lines="1"
+            android:paddingHorizontal="16dp"
+            android:text="@{transaction.price}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@id/tvPriceText"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@id/tvPriceText"
+            app:layout_constraintTop_toTopOf="@id/tvPriceText"
+            tools:text="@string/price" />
+
+        <TextView
+            android:id="@+id/tvInvestmentText"
+            style="@style/TextView.Normal.SemiBold.Red"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:lines="1"
+            android:text="@string/investment"
+            app:layout_constraintEnd_toStartOf="@id/tvInvestment"
+            app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/tvPriceText" />
+
+        <TextView
+            android:id="@+id/tvInvestment"
+            style="@style/TextView.Normal.SemiBold.Red"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:lines="1"
+            android:paddingHorizontal="16dp"
+            android:text="@{transaction.investment}"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@id/tvInvestmentText"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@id/tvInvestmentText"
+            app:layout_constraintTop_toTopOf="@id/tvInvestmentText"
+            tools:text="@string/order_time" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/Button.Sell"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:layout_marginEnd="10dp"
+            android:background="@null"
+            android:backgroundTint="@color/colorRed"
+            android:text="@string/cancel_order"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Button.Buy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/colorYellow"
+            android:text="@string/amend"
+            app:layout_constraintBottom_toBottomOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/button2"
+            app:layout_goneMarginBottom="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
